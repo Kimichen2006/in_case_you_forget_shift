@@ -1,0 +1,145 @@
+/* 注音亂碼修復器 - popup.css */
+/* 注入到每個網頁，樣式全部限定在 #bpmf-popup 內 */
+
+#bpmf-popup {
+  display: none;
+  position: absolute;
+  z-index: 2147483647; /* 最高層 */
+
+  background: #16161e;
+  border: 1px solid rgba(240, 192, 64, 0.5);
+  border-radius: 10px;
+  padding: 10px 12px 8px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(240, 192, 64, 0.08);
+
+  min-width: 180px;
+  max-width: 320px;
+
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e8e3d9;
+
+  opacity: 0;
+  transform: scale(0.92) translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+
+#bpmf-popup.bpmf-visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: all;
+}
+
+/* 標題列 */
+#bpmf-popup .bpmf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+#bpmf-popup .bpmf-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #f0c040;
+  text-transform: uppercase;
+}
+
+#bpmf-popup .bpmf-close {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.1s, background 0.1s;
+}
+
+#bpmf-popup .bpmf-close:hover {
+  color: #e8e3d9;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* 原始亂碼 */
+#bpmf-popup .bpmf-raw {
+  font-size: 11px;
+  font-family: monospace;
+  color: #555;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+/* 候選字群 */
+#bpmf-popup .bpmf-candidates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+#bpmf-popup .bpmf-candidate {
+  background: #22222e;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 15px;
+  color: #e8e3d9;
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, transform 0.1s, color 0.1s;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', sans-serif;
+}
+
+/* 第一個候選字高亮 */
+#bpmf-popup .bpmf-candidate:first-child {
+  border-color: rgba(240, 192, 64, 0.6);
+  color: #f0c040;
+}
+
+#bpmf-popup .bpmf-candidate:hover {
+  background: #f0c040;
+  border-color: #f0c040;
+  color: #16161e;
+  transform: translateY(-1px);
+}
+
+#bpmf-popup .bpmf-candidate sup {
+  font-size: 9px;
+  color: #555;
+  margin-right: 2px;
+  vertical-align: super;
+}
+
+#bpmf-popup .bpmf-candidate:first-child sup {
+  color: #a08020;
+}
+
+#bpmf-popup .bpmf-candidate:hover sup {
+  color: #7a6010;
+}
+
+/* 找不到結果 */
+#bpmf-popup .bpmf-empty {
+  font-size: 12px;
+  color: #555;
+  padding: 4px 2px;
+}
+
+/* 底部提示 */
+#bpmf-popup .bpmf-hint {
+  font-size: 10px;
+  color: #3a3a4a;
+  border-top: 1px solid #22222e;
+  padding-top: 6px;
+  margin-top: 2px;
+}

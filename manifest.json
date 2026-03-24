@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "注音亂碼修復器",
+  "version": "1.0",
+  "description": "選取忘切輸入法打出的亂碼，按 Alt+A 自動轉換為中文",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/dict.js", "content.js"],
+      "css": ["popup.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
